@@ -8,9 +8,19 @@ pipeline {
     }
 
     stage('Install Apache2') {
-      steps {
-        sh '''sudo apt install apache2 -y 
-sudo service restart apache2'''
+      parallel {
+        stage('Install Apache2') {
+          steps {
+            sh 'sudo apt install apache2 -y '
+          }
+        }
+
+        stage('Restart apache2') {
+          steps {
+            sh 'sudo service apache2 restart'
+          }
+        }
+
       }
     }
 
