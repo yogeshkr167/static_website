@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent DTL-LIN7
   stages {
     stage('Fetch from git') {
       steps {
